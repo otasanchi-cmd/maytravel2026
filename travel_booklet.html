@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>旅のしおり｜淡路島・彦根・長浜・関ヶ原</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --navy-light: #243356;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --cream: #f7f3ec;
+  --cream-dark: #ede6d8;
+  --rust: #8b4a2b;
+  --sage: #5a7a5c;
+  --ink: #1e1a16;
+  --muted: #6b6255;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--navy);
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 52px;
+}
+.nav-logo {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links li a {
+  display: block;
+  padding: 0 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  line-height: 52px;
+  white-space: nowrap;
+  transition: color 0.2s;
+  font-family: 'Shippori Mincho', serif;
+}
+.nav-links li a:hover { color: var(--gold); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 2rem 4rem;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, var(--gold) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, #4a90d9 0%, transparent 50%);
+}
+
+/* wave decoration top */
+.hero-wave {
+  position: absolute;
+  top: 60px; left: 0; right: 0;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 8px, transparent 8px, transparent 16px);
+  opacity: 0.4;
+}
+
+.hero-emblem {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+.hero-emblem svg { width: 100%; height: 100%; }
+
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+.hero-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.hero-subtitle {
+  font-family: 'Shippori Mincho', serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 400;
+  color: var(--gold-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 2.5rem;
+}
+.hero-dates {
+  display: inline-flex;
+  gap: 0;
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+.hero-date-item {
+  padding: 10px 20px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.1em;
+  border-right: 1px solid rgba(201,168,76,0.3);
+  font-family: 'Shippori Mincho', serif;
+}
+.hero-date-item:last-child { border-right: none; }
+.hero-date-item span {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-tag {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* ── SECTION COMMON ── */
+section { padding: 80px 0; }
+
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 3rem;
+}
+.section-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  color: var(--gold);
+  opacity: 0.25;
+  line-height: 1;
+  font-style: italic;
+}
+.section-heading {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+}
+.section-heading-en {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+  display: block;
+  margin-top: 2px;
+}
+
+/* ── ITINERARY TABLE ── */
+#overview { background: var(--cream); }
+
+.day-card {
+  border: 1px solid var(--cream-dark);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(26,39,68,0.05);
+}
+.day-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: var(--navy);
+  border-bottom: 2px solid var(--gold);
+}
+.day-card-date {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.day-card-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px;
+  color: var(--white);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.day-card-theme {
+  margin-left: auto;
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  white-space: nowrap;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--cream-dark);
+  gap: 12px;
+}
+.timeline-row:last-child { border-bottom: none; }
+.tl-time {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  min-width: 42px;
+  padding-top: 2px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+.tl-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.tl-dot.move { background: #e8a43a; }
+.tl-dot.stay { background: #4a9e6a; }
+.tl-dot.eat  { background: #c95a4a; }
+.tl-dot.sleep{ background: #4a7ac9; }
+.tl-dot.free { background: #aaa; }
+.tl-dot.fish { background: #1D9E75; }
+.tl-body { flex: 1; }
+.tl-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.tl-detail {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+.tl-badge {
+  display: inline-block;
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.tl-badge.rsv { background: #eeebfe; color: #5040b0; }
+.tl-badge.dur { background: var(--cream-dark); color: var(--muted); }
+
+/* ── SPOTS ── */
+#spots { background: var(--cream-dark); }
+
+.spots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.spot-card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(26,39,68,0.07);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+}
+.spot-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(26,39,68,0.12);
+}
+
+.spot-illo {
+  height: 160px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spot-illo svg { width: 100%; height: 100%; }
+
+.spot-area-tag {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  background: rgba(26,39,68,0.6);
+  padding: 3px 8px;
+  border-radius: 2px;
+  font-family: 'Shippori Mincho', serif;
+}
+
+.spot-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+.spot-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+}
+.spot-desc {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+}
+.spot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid var(--cream-dark);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: 'Shippori Mincho', serif;
+  letter-spacing: 0.08em;
+}
+.spot-link:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── MAPS ── */
+#maps { background: var(--cream); }
+
+.map-section { margin-bottom: 3rem; }
+.map-label {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.map-wrap {
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(26,39,68,0.06);
+}
+.map-wrap iframe { display: block; width: 100%; height: 420px; border: none; }
+
+/* pin list below map */
+.pin-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.pin-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  border-radius: 4px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 12px;
+  transition: border-color 0.2s, color 0.2s;
+  font-family: 'Shippori Mincho', serif;
+}
+.pin-item:hover { border-color: var(--gold); color: var(--navy); }
+.pin-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy);
+  border-top: 2px solid var(--gold);
+  text-align: center;
+  padding: 2.5rem;
+}
+.footer-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.15em;
+}
+.footer-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+/* divider */
+.kamon-divider {
+  text-align: center;
+  margin: 3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--cream-dark);
+}
+.kamon-divider::before,
+.kamon-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--cream-dark);
+}
+.kamon-divider span { font-size: 18px; color: var(--gold); opacity: 0.5; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">旅のしおり ｜ 2025.5</div>
+  <ul class="nav-links">
+    <li><a href="#hero">表紙</a></li>
+    <li><a href="#overview">工程表</a></li>
+    <li><a href="#spots">スポット</a></li>
+    <li><a href="#maps">地図</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-wave"></div>
+
+  <div class="hero-emblem">
+    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer ring -->
+      <circle cx="60" cy="60" r="56" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+      <!-- castle silhouette -->
+      <g fill="#c9a84c" opacity="0.85">
+        <!-- base -->
+        <rect x="34" y="76" width="52" height="8" rx="1"/>
+        <!-- stone wall -->
+        <rect x="38" y="62" width="44" height="15" rx="1"/>
+        <!-- middle tier -->
+        <rect x="42" y="50" width="36" height="13" rx="1"/>
+        <!-- upper tier -->
+        <rect x="46" y="40" width="28" height="11" rx="1"/>
+        <!-- top -->
+        <rect x="50" y="32" width="20" height="9" rx="1"/>
+        <!-- roof peak -->
+        <polygon points="60,20 52,33 68,33"/>
+        <!-- windows -->
+        <rect x="54" y="43" width="5" height="6" rx="1" fill="#1a2744"/>
+        <rect x="61" y="43" width="5" height="6" rx="1" fill="#1a2744"/>
+        <rect x="49" y="54" width="5" height="6" rx="1" fill="#1a2744"/>
+        <rect x="57" y="54" width="6" height="6" rx="1" fill="#1a2744"/>
+        <rect x="65" y="54" width="5" height="6" rx="1" fill="#1a2744"/>
+      </g>
+      <!-- waves at bottom -->
+      <g opacity="0.35" stroke="#c9a84c" stroke-width="1.2" fill="none">
+        <path d="M22 96 Q33 91 44 96 Q55 101 66 96 Q77 91 88 96 Q99 101 98 96"/>
+        <path d="M22 101 Q33 96 44 101 Q55 106 66 101 Q77 96 88 101 Q99 106 98 101"/>
+      </g>
+    </svg>
+  </div>
+
+  <p class="hero-label">Travel Booklet — May 2025</p>
+  <h1 class="hero-title">淡路島・彦根<br>長浜・関ヶ原</h1>
+  <p class="hero-subtitle">海と城と歴史を巡る旅</p>
+
+  <div class="hero-dates">
+    <div class="hero-date-item"><span>5/12</span>火 淡路島へ</div>
+    <div class="hero-date-item"><span>5/13</span>水 うずしお</div>
+    <div class="hero-date-item"><span>5/14</span>木 彦根へ</div>
+    <div class="hero-date-item"><span>5/15</span>金 安土・長浜</div>
+    <div class="hero-date-item"><span>5/16</span>土 関ヶ原・帰京</div>
+  </div>
+
+  <div class="hero-tags">
+    <span class="hero-tag">淡路島ドライブ</span>
+    <span class="hero-tag">うずしおクルーズ</span>
+    <span class="hero-tag">大塚国際美術館</span>
+    <span class="hero-tag">国宝 彦根城</span>
+    <span class="hero-tag">安土城跡</span>
+    <span class="hero-tag">鮨MAU</span>
+    <span class="hero-tag">関ヶ原古戦場</span>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div>
+        <h2 class="section-heading">全体工程表</h2>
+        <span class="section-heading-en">Itinerary Overview</span>
+      </div>
+    </div>
+
+    <!-- 5/12 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-card-date">5/12（火）</span>
+        <span class="day-card-title">神戸 → 淡路島</span>
+        <span class="day-card-theme">前半スタート</span>
+      </div>
+      <div class="timeline-row"><span class="tl-time">朝</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">✈ 羽田 → 神戸空港</div></div></div>
+      <div class="timeline-row"><span class="tl-time">10:30</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 神戸 → 淡路SA 立ち寄り</div><div class="tl-detail">〜1時間</div></div></div>
+      <div class="timeline-row"><span class="tl-time">12:30</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🎡 淡路ワールドパーク ONOKORO</div><div class="tl-detail">2〜2.5時間滞在 ／ 平日10:00〜17:00</div></div></div>
+      <div class="timeline-row"><span class="tl-time">15:50</span><span class="tl-dot fish"></span><div class="tl-body"><div class="tl-name">🐟 島のさかな屋 花光（洲本市公設市場内）</div><div class="tl-detail">刺身盛り合わせ購入 ／ 〜19:00 ／ 📞 0799-23-2124</div></div></div>
+      <div class="timeline-row"><span class="tl-time">17:00</span><span class="tl-dot sleep"></span><div class="tl-body"><div class="tl-name">🏠 SANU 2nd Home CURRENT チェックイン</div></div></div>
+      <div class="timeline-row"><span class="tl-time">夜</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍣 SANUで刺身盛り合わせ</div><div class="tl-detail">購入した刺身を宿でゆっくり</div></div></div>
+    </div>
+
+    <!-- 5/13 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-card-date">5/13（水）</span>
+        <span class="day-card-title">うずしお → 大塚国際美術館</span>
+        <span class="day-card-theme">淡路→徳島</span>
+      </div>
+      <div class="timeline-row"><span class="tl-time">7:50</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 宿 → 福良港</div><div class="tl-detail">09:00着目標で出発（受付30分前）</div></div></div>
+      <div class="timeline-row"><span class="tl-time">9:00</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">📋 乗船受付</div></div></div>
+      <div class="timeline-row"><span class="tl-time">9:30</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🌊 うずしおクルーズ 出航<span class="tl-badge rsv">09:30便 予約済</span></div><div class="tl-detail">約1時間 ／ 大人¥2,500</div></div></div>
+      <div class="timeline-row"><span class="tl-time">10:30</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🛒 道の駅うずしお 散策</div><div class="tl-detail">〜30分</div></div></div>
+      <div class="timeline-row"><span class="tl-time">11:00</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍱 福良周辺でランチ</div></div></div>
+      <div class="timeline-row"><span class="tl-time">12:00</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 福良 → 大塚国際美術館（鳴門）</div><div class="tl-detail">大鳴門橋を渡る ／ 約20分</div></div></div>
+      <div class="timeline-row"><span class="tl-time">12:20</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🖼 大塚国際美術館</div><div class="tl-detail">約4時間滞在 ／ 9:30〜17:00（入館〜16:00）／ ¥3,300（前売¥3,160）</div></div></div>
+      <div class="timeline-row"><span class="tl-time">16:15</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 鳴門 → 宿（淡路島）</div><div class="tl-detail">〜1時間</div></div></div>
+      <div class="timeline-row"><span class="tl-time">夜</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍽 la casa vecchia<span class="tl-badge rsv">予約済</span></div></div></div>
+    </div>
+
+    <!-- 5/14 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-card-date">5/14（木）</span>
+        <span class="day-card-title">淡路島 → 彦根</span>
+        <span class="day-card-theme">⚠ 彦根城16:30最終入場</span>
+      </div>
+      <div class="timeline-row"><span class="tl-time">9:00</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🌸 あわじ花さじき</div><div class="tl-detail">〜1時間</div></div></div>
+      <div class="timeline-row"><span class="tl-time">10:30</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 淡路 → 三宮（レンタカー返却）</div><div class="tl-detail">〜1時間</div></div></div>
+      <div class="timeline-row"><span class="tl-time">13:00</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚃 JR新快速 三宮 → 彦根</div><div class="tl-detail">〜2時間</div></div></div>
+      <div class="timeline-row"><span class="tl-time">15:40</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🏯 彦根城</div><div class="tl-detail">〜16:30最終入場 ／ 8:30〜17:00</div></div></div>
+      <div class="timeline-row"><span class="tl-time">夜</span><span class="tl-dot free"></span><div class="tl-body"><div class="tl-name">🚶 キャッスルロード散歩</div></div></div>
+      <div class="timeline-row"><span class="tl-time">夜</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍶 彦根酒場 半三</div></div></div>
+    </div>
+
+    <!-- 5/15 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-card-date">5/15（金）</span>
+        <span class="day-card-title">安土・近江八幡 → 長浜</span>
+        <span class="day-card-theme">🚗 レンタカー推奨</span>
+      </div>
+      <div class="timeline-row"><span class="tl-time">9:00</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 彦根 → 安土（さざなみ街道）</div><div class="tl-detail">〜30分</div></div></div>
+      <div class="timeline-row"><span class="tl-time">9:30</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🏯 安土城跡</div><div class="tl-detail">〜1.5時間 ／ 8:30〜16:00</div></div></div>
+      <div class="timeline-row"><span class="tl-time">11:15</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">☕ Chalet Mizugahama（湖岸カフェ）</div><div class="tl-detail">10:00〜16:30 ／ 近江八幡</div></div></div>
+      <div class="timeline-row"><span class="tl-time">昼</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍜 近江ちゃんぽん亭総本家</div><div class="tl-detail">元祖近江ちゃんぽん ／ 〜¥999 ／ 食後にLa Collinaでスイーツも◎</div></div></div>
+      <div class="timeline-row"><span class="tl-time">午後</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚗 近江八幡 → 彦根（レンタカー返却）→ 長浜</div><div class="tl-detail">JR 彦根→長浜 〜15分</div></div></div>
+      <div class="timeline-row"><span class="tl-time">夜</span><span class="tl-dot free"></span><div class="tl-body"><div class="tl-name">🚶 黒壁スクエア周辺散策</div></div></div>
+      <div class="timeline-row"><span class="tl-time">18:30</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍣 鮨MAU<span class="tl-badge rsv">予約済 18:30〜</span></div></div></div>
+    </div>
+
+    <!-- 5/16 -->
+    <div class="day-card">
+      <div class="day-card-header">
+        <span class="day-card-date">5/16（土）</span>
+        <span class="day-card-title">関ヶ原 → 米原 → 品川</span>
+        <span class="day-card-theme">⚔ 戦国で締める</span>
+      </div>
+      <div class="timeline-row"><span class="tl-time">朝</span><span class="tl-dot free"></span><div class="tl-body"><div class="tl-name">朝はゆっくり</div></div></div>
+      <div class="timeline-row"><span class="tl-time">午前</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚃 長浜 → 関ヶ原</div><div class="tl-detail">JR 〜30分</div></div></div>
+      <div class="timeline-row"><span class="tl-time">10:00</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">⚔ 岐阜関ヶ原古戦場記念館</div><div class="tl-detail">9:30〜17:00 ／ 2〜3時間滞在</div></div></div>
+      <div class="timeline-row"><span class="tl-time">昼前後</span><span class="tl-dot stay"></span><div class="tl-body"><div class="tl-name">🚶 古戦場散策（石田三成陣跡 etc.）</div></div></div>
+      <div class="timeline-row"><span class="tl-time">昼</span><span class="tl-dot eat"></span><div class="tl-body"><div class="tl-name">🍱 関ヶ原 or 米原でランチ</div></div></div>
+      <div class="timeline-row"><span class="tl-time">午後</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚃 関ヶ原 → 米原</div><div class="tl-detail">〜10分</div></div></div>
+      <div class="timeline-row"><span class="tl-time">18〜19時</span><span class="tl-dot move"></span><div class="tl-body"><div class="tl-name">🚅 米原 → 新幹線 → 品川</div></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPOTS -->
+<section id="spots">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div>
+        <h2 class="section-heading">スポット案内</h2>
+        <span class="section-heading-en">Spots & Highlights</span>
+      </div>
+    </div>
+
+    <div class="spots-grid">
+
+      <!-- ONOKORO -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(135deg, #e8f4f8 0%, #c5e8f0 100%);">
+          <span class="spot-area-tag">淡路島</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- sky -->
+            <rect width="260" height="160" fill="none"/>
+            <!-- clouds -->
+            <ellipse cx="50" cy="30" rx="28" ry="14" fill="white" opacity="0.8"/>
+            <ellipse cx="70" cy="24" rx="20" ry="12" fill="white" opacity="0.8"/>
+            <ellipse cx="190" cy="35" rx="22" ry="11" fill="white" opacity="0.7"/>
+            <!-- ferris wheel -->
+            <circle cx="180" cy="75" r="40" fill="none" stroke="#4a90c4" stroke-width="2.5"/>
+            <circle cx="180" cy="75" r="4" fill="#4a90c4"/>
+            <!-- spokes -->
+            <line x1="180" y1="75" x2="180" y2="35" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="180" y2="115" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="140" y2="75" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="220" y2="75" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="152" y2="47" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="208" y2="103" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="208" y2="47" stroke="#4a90c4" stroke-width="1.5"/>
+            <line x1="180" y1="75" x2="152" y2="103" stroke="#4a90c4" stroke-width="1.5"/>
+            <!-- gondolas -->
+            <rect x="174" y="28" width="12" height="10" rx="2" fill="#e86a3a" opacity="0.9"/>
+            <rect x="174" y="107" width="12" height="10" rx="2" fill="#e86a3a" opacity="0.9"/>
+            <rect x="133" y="68" width="12" height="10" rx="2" fill="#5aaa6a" opacity="0.9"/>
+            <rect x="215" y="68" width="12" height="10" rx="2" fill="#5aaa6a" opacity="0.9"/>
+            <rect x="145" y="39" width="12" height="10" rx="2" fill="#e8c83a" opacity="0.9"/>
+            <rect x="200" y="97" width="12" height="10" rx="2" fill="#e8c83a" opacity="0.9"/>
+            <rect x="200" y="39" width="12" height="10" rx="2" fill="#c45a8a" opacity="0.9"/>
+            <rect x="145" y="97" width="12" height="10" rx="2" fill="#c45a8a" opacity="0.9"/>
+            <!-- support -->
+            <line x1="180" y1="115" x2="160" y2="140" stroke="#4a90c4" stroke-width="3"/>
+            <line x1="180" y1="115" x2="200" y2="140" stroke="#4a90c4" stroke-width="3"/>
+            <!-- ground -->
+            <rect x="0" y="138" width="260" height="22" fill="#a8c87a" opacity="0.6"/>
+            <!-- miniature buildings -->
+            <rect x="20" y="110" width="18" height="28" fill="#e8d5b0" opacity="0.8"/>
+            <polygon points="29,103 20,112 38,112" fill="#c97a4a" opacity="0.8"/>
+            <rect x="50" y="118" width="14" height="20" fill="#d5c5a0" opacity="0.8"/>
+            <polygon points="57,112 50,120 64,120" fill="#b06a3a" opacity="0.8"/>
+            <rect x="76" y="112" width="20" height="26" fill="#e0d0b8" opacity="0.8"/>
+            <polygon points="86,105 76,114 96,114" fill="#c07040" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">淡路ワールドパーク ONOKORO</div>
+          <div class="spot-desc">淡路島中部に位置するテーマパーク。世界の名所をミニチュアで再現したワールドパビリオンや、ジップライン、観覧車など。平日10:00〜17:00。大人¥1,600。</div>
+          <a href="https://onokoro.jp" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- うずしお -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(160deg, #0a2a5a 0%, #1a5a9a 50%, #2a8aca 100%);">
+          <span class="spot-area-tag">南淡路</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <!-- sea -->
+            <rect width="260" height="160" fill="none"/>
+            <!-- waves bg -->
+            <path d="M0 80 Q30 65 60 80 Q90 95 120 80 Q150 65 180 80 Q210 95 240 80 Q255 72 260 75 L260 160 L0 160Z" fill="#0d3a7a" opacity="0.5"/>
+            <!-- whirlpool -->
+            <g transform="translate(130,90)">
+              <circle cx="0" cy="0" r="38" fill="none" stroke="#5ab4e8" stroke-width="1.5" opacity="0.3"/>
+              <path d="M0,-35 A35,35 0 0,1 35,0" fill="none" stroke="#5ab4e8" stroke-width="2.5" opacity="0.7"/>
+              <path d="M0,-28 A28,28 0 0,1 28,0" fill="none" stroke="#7ac8f0" stroke-width="2" opacity="0.6"/>
+              <path d="M0,-20 A20,20 0 0,1 20,0" fill="none" stroke="#a0d8f8" stroke-width="2" opacity="0.7"/>
+              <path d="M0,-13 A13,13 0 0,1 13,0" fill="none" stroke="#c0e8ff" stroke-width="1.5" opacity="0.8"/>
+              <path d="M0,-7 A7,7 0 0,1 7,0" fill="none" stroke="white" stroke-width="1.5" opacity="0.9"/>
+              <circle cx="0" cy="0" r="3" fill="white" opacity="0.9"/>
+              <!-- splashes -->
+              <line x1="0" y1="-38" x2="0" y2="-44" stroke="#7ad0f8" stroke-width="1.5" opacity="0.6"/>
+              <line x1="27" y1="-27" x2="31" y2="-31" stroke="#7ad0f8" stroke-width="1.5" opacity="0.6"/>
+              <line x1="38" y1="0" x2="44" y2="0" stroke="#7ad0f8" stroke-width="1.5" opacity="0.6"/>
+            </g>
+            <!-- boat -->
+            <g transform="translate(60,70)">
+              <ellipse cx="0" cy="8" rx="30" ry="8" fill="#e8e0c8"/>
+              <rect x="-22" y="0" width="44" height="9" rx="3" fill="#f0ead8"/>
+              <rect x="-5" y="-20" width="4" height="22" fill="#c8b890"/>
+              <polygon points="-5,-20 15,-12 -5,-4" fill="#e85a2a" opacity="0.9"/>
+            </g>
+            <!-- sky shimmer -->
+            <rect x="0" y="0" width="260" height="50" fill="url(#skyGrad)" opacity="0.4"/>
+            <defs>
+              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0a1a3a"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </linearGradient>
+            </defs>
+            <!-- moon -->
+            <circle cx="210" cy="28" r="14" fill="#f0e898" opacity="0.7"/>
+            <circle cx="218" cy="23" r="11" fill="#1a5a9a" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">うずしおクルーズ</div>
+          <div class="spot-desc">大鳴門橋の下で生まれる世界最大級の渦潮を間近で体験できる遊覧船。約1時間のクルーズ。出航時刻は潮によって変動。大人¥2,500。9:30便を予約済。</div>
+          <a href="https://www.uzu-shio.com" target="_blank" class="spot-link">→ 公式サイト・時刻表</a>
+        </div>
+      </div>
+
+      <!-- 大塚国際美術館 -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(135deg, #2a1a0a 0%, #5a3a1a 50%, #8a6a3a 100%);">
+          <span class="spot-area-tag">鳴門（徳島）</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- museum frame -->
+            <rect x="20" y="15" width="220" height="130" rx="3" fill="#1a1008" opacity="0.5"/>
+            <!-- sunflowers (Van Gogh) -->
+            <g transform="translate(65,80)">
+              <rect x="-2" y="0" width="4" height="35" fill="#4a7a2a"/>
+              <circle cx="0" cy="-5" r="18" fill="#e8a820"/>
+              <circle cx="0" cy="-5" r="10" fill="#8a5010"/>
+              <g stroke="#e8c040" stroke-width="1.5" fill="none">
+                <line x1="0" y1="-23" x2="0" y2="-32"/>
+                <line x1="13" y1="-16" x2="19" y2="-22"/>
+                <line x1="18" y1="-5" x2="27" y2="-5"/>
+                <line x1="13" y1="6" x2="19" y2="12"/>
+                <line x1="0" y1="13" x2="0" y2="20"/>
+                <line x1="-13" y1="6" x2="-19" y2="12"/>
+                <line x1="-18" y1="-5" x2="-27" y2="-5"/>
+                <line x1="-13" y1="-16" x2="-19" y2="-22"/>
+              </g>
+            </g>
+            <!-- Mona Lisa frame -->
+            <rect x="120" y="30" width="60" height="80" rx="2" fill="#3a2808" stroke="#c9a84c" stroke-width="2"/>
+            <rect x="126" y="36" width="48" height="68" rx="1" fill="#c4a882"/>
+            <!-- simplified face -->
+            <ellipse cx="150" cy="60" rx="14" ry="18" fill="#d4b890"/>
+            <ellipse cx="150" cy="48" rx="16" ry="10" fill="#6a4a20"/>
+            <path d="M144 68 Q150 72 156 68" fill="none" stroke="#8a5a30" stroke-width="1.2"/>
+            <!-- starry night swirls -->
+            <g opacity="0.6">
+              <path d="M30 40 Q50 25 70 40 Q90 55 110 35" fill="none" stroke="#4a6aaa" stroke-width="2"/>
+              <path d="M30 55 Q55 38 80 55 Q100 68 115 50" fill="none" stroke="#3a5a9a" stroke-width="1.5"/>
+              <circle cx="45" cy="35" r="4" fill="#e8e870" opacity="0.7"/>
+              <circle cx="90" cy="28" r="5" fill="#e8e870" opacity="0.6"/>
+              <circle cx="35" cy="55" r="3" fill="#c0c860" opacity="0.5"/>
+            </g>
+            <!-- floor -->
+            <rect x="20" y="132" width="220" height="13" fill="#3a2808" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">大塚国際美術館</div>
+          <div class="spot-desc">鳴門市に位置する世界最大級の常設展示の美術館。西洋名画1,000余点を陶板で原寸大に再現。鑑賞ルート約4km。9:30〜17:00（入館〜16:00）、月曜休館。大人¥3,300。</div>
+          <a href="https://o-museum.or.jp" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- 花さじき -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(160deg, #e8f0e0 0%, #c0d8a0 100%);">
+          <span class="spot-area-tag">淡路島北部</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- hills -->
+            <ellipse cx="130" cy="140" rx="170" ry="50" fill="#7aaa50" opacity="0.5"/>
+            <!-- flower field rows -->
+            <g opacity="0.85">
+              <!-- row 1 purple -->
+              <g fill="#9a60c8">
+                <circle cx="30" cy="100" r="5"/><circle cx="50" cy="95" r="6"/><circle cx="70" cy="100" r="5"/>
+                <circle cx="90" cy="93" r="6"/><circle cx="110" cy="98" r="5"/><circle cx="130" cy="94" r="6"/>
+                <circle cx="150" cy="100" r="5"/><circle cx="170" cy="95" r="6"/><circle cx="190" cy="100" r="5"/>
+                <circle cx="210" cy="96" r="6"/><circle cx="230" cy="101" r="5"/>
+              </g>
+              <!-- stems row 1 -->
+              <g stroke="#4a7a2a" stroke-width="1.5">
+                <line x1="30" y1="105" x2="30" y2="115"/><line x1="50" y1="101" x2="50" y2="115"/>
+                <line x1="70" y1="105" x2="70" y2="115"/><line x1="90" y1="99" x2="90" y2="115"/>
+                <line x1="110" y1="103" x2="110" y2="115"/><line x1="130" y1="100" x2="130" y2="115"/>
+                <line x1="150" y1="105" x2="150" y2="115"/><line x1="170" y1="101" x2="170" y2="115"/>
+                <line x1="190" y1="105" x2="190" y2="115"/><line x1="210" y1="102" x2="210" y2="115"/>
+                <line x1="230" y1="106" x2="230" y2="115"/>
+              </g>
+              <!-- row 2 yellow -->
+              <g fill="#f0c830">
+                <circle cx="40" cy="115" r="5"/><circle cx="60" cy="110" r="6"/><circle cx="80" cy="115" r="5"/>
+                <circle cx="100" cy="108" r="6"/><circle cx="120" cy="113" r="5"/><circle cx="140" cy="109" r="6"/>
+                <circle cx="160" cy="115" r="5"/><circle cx="180" cy="110" r="6"/><circle cx="200" cy="115" r="5"/>
+                <circle cx="220" cy="111" r="6"/>
+              </g>
+              <!-- row 3 pink -->
+              <g fill="#f08090">
+                <circle cx="25" cy="128" r="5"/><circle cx="48" cy="123" r="6"/><circle cx="72" cy="128" r="5"/>
+                <circle cx="96" cy="121" r="6"/><circle cx="118" cy="127" r="5"/><circle cx="142" cy="122" r="6"/>
+                <circle cx="164" cy="128" r="5"/><circle cx="186" cy="123" r="6"/><circle cx="208" cy="128" r="5"/>
+                <circle cx="232" cy="124" r="6"/>
+              </g>
+            </g>
+            <!-- sea in background -->
+            <rect x="0" y="40" width="260" height="30" fill="#5a9aca" opacity="0.4"/>
+            <path d="M0 55 Q40 48 80 55 Q120 62 160 55 Q200 48 240 55 L260 55 L260 40 L0 40Z" fill="#4a8aba" opacity="0.3"/>
+            <!-- sky -->
+            <rect x="0" y="0" width="260" height="42" fill="#b8d8f0" opacity="0.5"/>
+            <ellipse cx="60" cy="20" rx="30" ry="12" fill="white" opacity="0.7"/>
+            <ellipse cx="180" cy="15" rx="22" ry="10" fill="white" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">あわじ花さじき</div>
+          <div class="spot-desc">淡路島北部の丘陵地に広がる広大な花畑。明石海峡と神戸の街並みを望む絶景と、四季折々の花が楽しめる。入園無料。5月はポピーやネモフィラが見頃。</div>
+          <a href="https://awajihanasajiki.jp" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- 彦根城 -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(160deg, #e0e8f0 0%, #b0c8e0 100%);">
+          <span class="spot-area-tag">彦根</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- moat water -->
+            <ellipse cx="130" cy="148" rx="120" ry="18" fill="#6a9aba" opacity="0.4"/>
+            <!-- stone base -->
+            <polygon points="40,130 60,108 200,108 220,130" fill="#8a8878"/>
+            <polygon points="55,108 75,88 185,88 205,108" fill="#9a9888"/>
+            <!-- main tower -->
+            <rect x="85" y="50" width="90" height="40" fill="#e8e4d8"/>
+            <rect x="90" y="35" width="80" height="18" fill="#e0dcc8"/>
+            <!-- roofs -->
+            <polygon points="130,15 75,52 185,52" fill="#3a3a3a"/>
+            <polygon points="130,32 88,50 172,50" fill="#2a2a2a"/>
+            <polygon points="130,48 95,65 165,65" fill="#3a3a3a"/>
+            <!-- roof upturns -->
+            <path d="M75,52 Q65,48 60,55" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+            <path d="M185,52 Q195,48 200,55" fill="none" stroke="#3a3a3a" stroke-width="2"/>
+            <!-- windows -->
+            <rect x="100" y="55" width="14" height="16" rx="2" fill="#4a6a8a" opacity="0.7"/>
+            <rect x="123" y="55" width="14" height="16" rx="2" fill="#4a6a8a" opacity="0.7"/>
+            <rect x="146" y="55" width="14" height="16" rx="2" fill="#4a6a8a" opacity="0.7"/>
+            <rect x="105" y="38" width="10" height="12" rx="2" fill="#4a6a8a" opacity="0.7"/>
+            <rect x="145" y="38" width="10" height="12" rx="2" fill="#4a6a8a" opacity="0.7"/>
+            <!-- walls -->
+            <rect x="40" y="128" width="180" height="12" fill="#7a7868"/>
+            <!-- cherry blossoms -->
+            <g opacity="0.8">
+              <circle cx="38" cy="95" r="14" fill="#f4b8c8"/>
+              <circle cx="50" cy="85" r="10" fill="#f8c8d8"/>
+              <circle cx="222" cy="90" r="14" fill="#f4b8c8"/>
+              <circle cx="210" cy="82" r="10" fill="#f8c8d8"/>
+            </g>
+            <!-- sky gradient -->
+            <defs>
+              <linearGradient id="skyGrad2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#c0d8f0"/>
+                <stop offset="100%" stop-color="#e8f0f8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">国宝 彦根城</div>
+          <div class="spot-desc">江戸時代初期に築かれた国宝の天守。全国に現存する天守の中でも特に保存状態がよく、城郭全体が国の特別史跡。8:30〜17:00（最終入場16:30）。大人¥800。</div>
+          <a href="https://hikonecastle.com" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- 安土城跡 -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(135deg, #2a1a08 0%, #5a3a18 60%, #3a5a28 100%);">
+          <span class="spot-area-tag">近江八幡</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- mountain/hill -->
+            <polygon points="130,20 30,140 230,140" fill="#3a4a28" opacity="0.8"/>
+            <polygon points="130,20 55,140 205,140" fill="#4a5a32" opacity="0.7"/>
+            <!-- stone steps -->
+            <g fill="#6a6250" opacity="0.9">
+              <rect x="100" y="118" width="60" height="6"/>
+              <rect x="105" y="107" width="50" height="6"/>
+              <rect x="110" y="96" width="40" height="6"/>
+              <rect x="113" y="85" width="34" height="6"/>
+              <rect x="116" y="74" width="28" height="6"/>
+              <rect x="119" y="63" width="22" height="6"/>
+              <rect x="122" y="52" width="16" height="6"/>
+            </g>
+            <!-- ruins at top -->
+            <g fill="#8a7a60" opacity="0.85">
+              <rect x="112" y="28" width="36" height="28" rx="1"/>
+              <rect x="108" y="24" width="44" height="8" rx="1"/>
+              <!-- broken walls -->
+              <rect x="112" y="28" width="6" height="12"/>
+              <rect x="142" y="28" width="6" height="18"/>
+              <rect x="122" y="28" width="4" height="8"/>
+            </g>
+            <!-- trees -->
+            <g fill="#2a5a18" opacity="0.9">
+              <circle cx="55" cy="100" r="18"/>
+              <circle cx="75" cy="90" r="14"/>
+              <circle cx="200" cy="98" r="16"/>
+              <circle cx="185" cy="88" r="12"/>
+            </g>
+            <!-- sunbeams -->
+            <g stroke="#f0d060" stroke-width="1" opacity="0.2">
+              <line x1="130" y1="10" x2="40" y2="145"/>
+              <line x1="130" y1="10" x2="80" y2="145"/>
+              <line x1="130" y1="10" x2="130" y2="145"/>
+              <line x1="130" y1="10" x2="180" y2="145"/>
+              <line x1="130" y1="10" x2="220" y2="145"/>
+            </g>
+            <!-- lake at bottom -->
+            <rect x="0" y="140" width="260" height="20" fill="#3a6a9a" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">安土城跡</div>
+          <div class="spot-desc">織田信長が築いた幻の名城跡。天守台石垣など遺構が残り、信長の壮大な夢を感じられる。近江八幡市安土町。8:30〜16:00。大人¥700。</div>
+          <a href="https://www.azuchi-nobunaga.com" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- La Collina -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(135deg, #c8e0b8 0%, #a0c890 100%);">
+          <span class="spot-area-tag">近江八幡</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- sky -->
+            <rect x="0" y="0" width="260" height="70" fill="#d0e8c0" opacity="0.5"/>
+            <!-- clouds -->
+            <ellipse cx="70" cy="25" rx="35" ry="15" fill="white" opacity="0.7"/>
+            <ellipse cx="95" cy="18" rx="25" ry="13" fill="white" opacity="0.7"/>
+            <ellipse cx="190" cy="28" rx="28" ry="12" fill="white" opacity="0.6"/>
+            <!-- grass hill -->
+            <ellipse cx="130" cy="130" rx="150" ry="50" fill="#6aaa40" opacity="0.6"/>
+            <!-- main building - thatched roof style -->
+            <rect x="50" y="75" width="160" height="55" rx="2" fill="#e8dcc8"/>
+            <!-- thatched roof -->
+            <path d="M35,78 Q130,30 225,78" fill="#8a7a50"/>
+            <path d="M40,80 Q130,35 220,80" fill="#9a8a60"/>
+            <!-- chimney -->
+            <rect x="115" y="35" width="12" height="28" fill="#7a6a48"/>
+            <rect x="111" y="33" width="20" height="5" rx="1" fill="#6a5a38"/>
+            <!-- smoke -->
+            <path d="M121,30 Q118,20 124,12 Q120,5 126,0" fill="none" stroke="#c0b898" stroke-width="2" opacity="0.5"/>
+            <!-- windows -->
+            <rect x="68" y="90" width="20" height="25" rx="2" fill="#6a9aba" opacity="0.7"/>
+            <rect x="100" y="90" width="20" height="25" rx="2" fill="#6a9aba" opacity="0.7"/>
+            <rect x="140" y="90" width="20" height="25" rx="2" fill="#6a9aba" opacity="0.7"/>
+            <rect x="172" y="90" width="20" height="25" rx="2" fill="#6a9aba" opacity="0.7"/>
+            <!-- door -->
+            <rect x="115" y="98" width="30" height="32" rx="2" fill="#7a6a50"/>
+            <!-- flowers border -->
+            <g fill="#f0a040" opacity="0.8">
+              <circle cx="50" cy="130" r="6"/><circle cx="70" cy="125" r="5"/><circle cx="90" cy="130" r="6"/>
+              <circle cx="170" cy="125" r="5"/><circle cx="190" cy="130" r="6"/><circle cx="210" cy="126" r="5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">La Collina 近江八幡</div>
+          <div class="spot-desc">たねやグループが手がける茅葺き屋根の複合施設。バームクーヘンや和洋菓子が楽しめる。広大な自然の中でゆったりとした時間を過ごせる人気スポット。9:00〜18:00。</div>
+          <a href="http://taneya.jp/la_collina/index.html" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- 黒壁スクエア -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 100%);">
+          <span class="spot-area-tag">長浜</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- buildings - kurokabe style -->
+            <!-- main black wall building -->
+            <rect x="60" y="40" width="80" height="100" fill="#1a1a1a"/>
+            <rect x="58" y="38" width="84" height="8" fill="#2a2a2a"/>
+            <!-- white plaster sections -->
+            <rect x="65" y="50" width="30" height="40" fill="#e8e4d8" opacity="0.9"/>
+            <rect x="105" y="50" width="28" height="40" fill="#e8e4d8" opacity="0.9"/>
+            <!-- black windows -->
+            <rect x="70" y="55" width="18" height="15" fill="#1a1a1a"/>
+            <rect x="108" y="55" width="18" height="15" fill="#1a1a1a"/>
+            <rect x="70" y="76" width="18" height="10" fill="#1a1a1a"/>
+            <rect x="108" y="76" width="18" height="10" fill="#1a1a1a"/>
+            <!-- door -->
+            <rect x="85" y="110" width="30" height="30" fill="#2a1a08"/>
+            <circle cx="100" cy="125" r="2" fill="#c9a84c"/>
+            <!-- roof detail -->
+            <polygon points="100,28 58,42 142,42" fill="#1a1a1a"/>
+            <!-- second building -->
+            <rect x="150" y="55" width="70" height="85" fill="#f0ead8"/>
+            <rect x="148" y="50" width="74" height="8" fill="#d8d0b8"/>
+            <polygon points="185,38 148,54 222,54" fill="#3a3a3a"/>
+            <!-- glass windows -->
+            <rect x="158" y="62" width="20" height="28" fill="#6a9aba" opacity="0.6"/>
+            <rect x="188" y="62" width="20" height="28" fill="#6a9aba" opacity="0.6"/>
+            <rect x="158" y="98" width="20" height="18" fill="#6a9aba" opacity="0.6"/>
+            <rect x="188" y="98" width="20" height="18" fill="#6a9aba" opacity="0.6"/>
+            <!-- left building -->
+            <rect x="10" y="65" width="45" height="75" fill="#2a2520"/>
+            <rect x="8" y="60" width="49" height="8" fill="#1a1a18"/>
+            <polygon points="32,48 8,64 56,64" fill="#1a1a18"/>
+            <rect x="18" y="72" width="14" height="20" fill="#e8e4d8" opacity="0.7"/>
+            <rect x="38" y="72" width="10" height="20" fill="#e8e4d8" opacity="0.7"/>
+            <!-- lanterns -->
+            <g fill="#e8a020" opacity="0.7">
+              <ellipse cx="100" cy="35" rx="4" ry="6"/>
+              <line x1="100" y1="29" x2="100" y2="25" stroke="#c8c8a0" stroke-width="1"/>
+            </g>
+            <!-- stone path -->
+            <rect x="0" y="140" width="260" height="20" fill="#5a5040" opacity="0.6"/>
+            <g fill="#7a6a58" opacity="0.4">
+              <ellipse cx="50" cy="148" rx="18" ry="5"/>
+              <ellipse cx="110" cy="150" rx="20" ry="4"/>
+              <ellipse cx="180" cy="147" rx="16" ry="5"/>
+              <ellipse cx="230" cy="149" rx="14" ry="4"/>
+            </g>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">黒壁スクエア</div>
+          <div class="spot-desc">長浜市の旧市街地に広がるガラス工芸を中心とした観光エリア。黒漆喰の蔵と洋館が並ぶレトロな街並みが魅力。ガラスショップ、カフェ、雑貨店が集まる。</div>
+          <a href="https://www.kurokabe.co.jp" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+      <!-- 関ヶ原 -->
+      <div class="spot-card">
+        <div class="spot-illo" style="background: linear-gradient(160deg, #1a2a10 0%, #3a5020 50%, #708040 100%);">
+          <span class="spot-area-tag">関ヶ原（岐阜）</span>
+          <svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="160" fill="none"/>
+            <!-- misty battlefield -->
+            <rect x="0" y="80" width="260" height="80" fill="#3a5020" opacity="0.6"/>
+            <!-- fog layers -->
+            <ellipse cx="130" cy="100" rx="170" ry="25" fill="#c8d8a0" opacity="0.2"/>
+            <ellipse cx="100" cy="110" rx="140" ry="20" fill="#c8d8a0" opacity="0.15"/>
+            <!-- flags - western army -->
+            <g>
+              <line x1="50" y1="120" x2="50" y2="60" stroke="#6a5030" stroke-width="2"/>
+              <rect x="50" y="60" width="28" height="20" fill="#e8d040"/>
+              <line x1="65" y1="100" x2="65" y2="55" stroke="#6a5030" stroke-width="2"/>
+              <rect x="65" y="55" width="24" height="18" fill="#e83030"/>
+              <line x1="80" y1="108" x2="80" y2="62" stroke="#6a5030" stroke-width="2"/>
+              <rect x="80" y="62" width="22" height="16" fill="#e8d040"/>
+            </g>
+            <!-- flags - eastern army -->
+            <g>
+              <line x1="180" y1="115" x2="180" y2="58" stroke="#6a5030" stroke-width="2"/>
+              <rect x="154" y="58" width="26" height="18" fill="#3040e8"/>
+              <line x1="198" y1="108" x2="198" y2="55" stroke="#6a5030" stroke-width="2"/>
+              <rect x="174" y="55" width="24" height="17" fill="#3040e8"/>
+              <line x1="215" y1="118" x2="215" y2="62" stroke="#6a5030" stroke-width="2"/>
+              <rect x="193" y="62" width="22" height="16" fill="#e8d040"/>
+            </g>
+            <!-- memorial stone -->
+            <rect x="116" y="100" width="28" height="40" rx="2" fill="#7a7060"/>
+            <rect x="112" y="96" width="36" height="8" rx="1" fill="#8a8070"/>
+            <!-- mountain silhouette -->
+            <polygon points="0,80 40,40 80,70 130,30 180,60 220,35 260,55 260,80" fill="#2a3a18" opacity="0.8"/>
+            <!-- sun / moon -->
+            <circle cx="40" cy="30" r="16" fill="#f0d060" opacity="0.5"/>
+            <g stroke="#f0d060" stroke-width="1" opacity="0.3">
+              <line x1="40" y1="10" x2="40" y2="4"/>
+              <line x1="56" y1="14" x2="60" y2="10"/>
+              <line x1="60" y1="30" x2="66" y2="30"/>
+              <line x1="24" y1="14" x2="20" y2="10"/>
+              <line x1="20" y1="30" x2="14" y2="30"/>
+            </g>
+            <!-- museum building small -->
+            <rect x="100" y="130" width="60" height="25" fill="#5a5040" opacity="0.7"/>
+            <rect x="95" y="126" width="70" height="7" fill="#4a4030" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="spot-body">
+          <div class="spot-name">岐阜関ヶ原古戦場記念館</div>
+          <div class="spot-desc">1600年の天下分け目の関ヶ原の戦いを伝える記念館。映像シアターや武将の甲冑、戦況ジオラマなど充実の展示。古戦場散策との合わせがおすすめ。9:30〜17:00。</div>
+          <a href="https://sekigahara.pref.gifu.lg.jp" target="_blank" class="spot-link">→ 公式サイト</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAPS -->
+<section id="maps">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div>
+        <h2 class="section-heading">エリアマップ</h2>
+        <span class="section-heading-en">Area Maps</span>
+      </div>
+    </div>
+
+    <!-- Map 1: Awaji -->
+    <div class="map-section">
+      <div class="map-label">🌊 前半 ／ 淡路島・鳴門エリア</div>
+      <div class="map-wrap">
+        <!-- 淡路島中心 (34.595, 134.914) zoom13 で全体を表示 -->
+        <iframe
+          src="https://maps.google.com/maps?q=34.595,134.914&z=11&output=embed&hl=ja"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="pin-list">
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=淡路サービスエリア+兵庫県淡路市岩屋" target="_blank">
+          <span class="pin-dot" style="background:#e8a43a"></span>淡路SA
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=淡路ワールドパークONOKORO+兵庫県淡路市塩田新島" target="_blank">
+          <span class="pin-dot" style="background:#4a9e6a"></span>ONOKORO
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=島のさかな屋花光+洲本市本町4-5-23" target="_blank">
+          <span class="pin-dot" style="background:#1D9E75"></span>島のさかな屋 花光
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=SANU+2nd+Home+CURRENT+淡路島" target="_blank">
+          <span class="pin-dot" style="background:#4a7ac9"></span>SANU 2nd Home（宿泊）
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=あわじ花さじき+兵庫県淡路市楠本2805" target="_blank">
+          <span class="pin-dot" style="background:#4a9e6a"></span>あわじ花さじき
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=うずしおクルーズ+南あわじ市福良港" target="_blank">
+          <span class="pin-dot" style="background:#2a6aaa"></span>うずしおクルーズ（福良港）
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=道の駅うずしお+南あわじ市福良丙947" target="_blank">
+          <span class="pin-dot" style="background:#e8a43a"></span>道の駅うずしお
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=大塚国際美術館+鳴門市鳴門公園内" target="_blank">
+          <span class="pin-dot" style="background:#8b4a2b"></span>大塚国際美術館（鳴門）
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=la+casa+vecchia+淡路島" target="_blank">
+          <span class="pin-dot" style="background:#c95a4a"></span>la casa vecchia
+        </a>
+      </div>
+    </div>
+
+    <div class="kamon-divider"><span>✦</span></div>
+
+    <!-- Map 2: Hikone / Nagahama / Azuchi / Sekigahara -->
+    <div class="map-section">
+      <div class="map-label">🏯 後半 ／ 彦根・長浜・安土・関ヶ原エリア</div>
+      <div class="map-wrap">
+        <!-- 滋賀・岐阜エリア中心 (35.27, 136.25) zoom10 -->
+        <iframe
+          src="https://maps.google.com/maps?q=35.27,136.25&z=10&output=embed&hl=ja"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="pin-list">
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=彦根城+滋賀県彦根市金亀町1-1" target="_blank">
+          <span class="pin-dot" style="background:#1a2744"></span>🏯 彦根城
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=彦根酒場半三+彦根市" target="_blank">
+          <span class="pin-dot" style="background:#c95a4a"></span>彦根酒場 半三
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=安土城跡+近江八幡市安土町下豊浦" target="_blank">
+          <span class="pin-dot" style="background:#8b4a2b"></span>安土城跡
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=Chalet+Mizugahama+近江八幡市長命寺町水ヶ浜182" target="_blank">
+          <span class="pin-dot" style="background:#4a9e6a"></span>Chalet Mizugahama
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=ラコリーナ近江八幡+近江八幡市北之庄町615" target="_blank">
+          <span class="pin-dot" style="background:#4a9e6a"></span>La Collina 近江八幡
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=ちゃんぽん亭総本家+近江八幡" target="_blank">
+          <span class="pin-dot" style="background:#c95a4a"></span>近江ちゃんぽん亭総本家
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=黒壁スクエア+長浜市元浜町12-38" target="_blank">
+          <span class="pin-dot" style="background:#2a4a8a"></span>黒壁スクエア（長浜）
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=鮨MAU+長浜市" target="_blank">
+          <span class="pin-dot" style="background:#c95a4a"></span>鮨MAU
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=岐阜関ヶ原古戦場記念館+岐阜県不破郡関ケ原町関ケ原894-55" target="_blank">
+          <span class="pin-dot" style="background:#5a3020"></span>⚔ 関ヶ原古戦場記念館
+        </a>
+        <a class="pin-item" href="https://www.google.com/maps/search/?api=1&query=米原駅+滋賀県米原市" target="_blank">
+          <span class="pin-dot" style="background:#e8a43a"></span>米原駅（新幹線）
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">淡路島・彦根・長浜・関ヶ原</div>
+  <div class="footer-text">May 12–16, 2025 ｜ Travel Booklet</div>
+</footer>
+
+</body>
+</html>
